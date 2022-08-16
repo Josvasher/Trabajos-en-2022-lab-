@@ -1,0 +1,245 @@
+#Aqui creamos las listas para poder hacer los ejercicios mas facil 
+pedidoham=["Torta de carne","Torta de carne extra","Tocino","Lechuga","Tomate","Cebolla","Mayonesa","Mostaza","Ketchup"]
+acom=["Papas","Aros de cebolla"]
+Bebidas=["CocaCola","Sprite","Pepsi","7Up"]
+confir=[]
+ordenescombo=[]
+ordenescombosi=[]
+#aqui tenemos una funcion de la preguntas que haremos 
+def pre():
+  n=0
+  #aqui creamos un ciclo para poder hacer todas las preguntas de una y luego agregar cada una de las respuestas en una lista que sera de las ordenes 
+  for i in range (0,9):
+    print("Desea",pedidoham[n],"?")
+    n=n+1
+    list=int(input("Si. 1 No. 2 "))
+    if list == 1:
+      confir.append(list)
+    elif list == 2:
+      confir.append(list)
+    else: 
+      print("Como no ha colocado un numero deseado sera puesto como No quiere el ingrediente")
+#Aqui hacemos otra funcion de los acompañamientos que tenemos que hacerque sera similar al anterior
+def extra():
+  s=int(input("Quiere acompañamientos? Si. 1 No. 2 "))
+  n2=0
+  if s == 2:
+    ordenescombo.append(1)
+  if s == 1:
+    ordenescombosi.append(1)
+  #Aqui lo que hicimos que si no queria acompañamientos directamente agregara en la lista los dos 2 y luego preguntamos de la misma manera que lo hicimos en la primera parte 
+  if s == 1:
+    for e in range (0,2):
+      print("Desea",acom[n2],"?")
+      n2=n2+1
+      list=int(input("Si. 1 No. 2 "))
+      if list == 1:
+        confir.append(list)
+      elif list == 2:
+        confir.append(list)
+      else:
+        print("Como no ha colocado un numero deseado sera puesto como No quiere el ingrediente")
+    
+  elif s == 2:
+    confir.append(2)
+    confir.append(2)
+#y aqui lo que hicimos fue una para las bebidas que solo se podra selecionar una     
+def agua():
+  n3=0
+  n4=1
+  m=int(input("Desea una bebida? Si. 1 No. 2"))
+  if m == 2:
+    ordenescombo.append(1)
+  if m == 1:
+    ordenescombosi.append(1)
+  #Aqui vamos a mostrar todas las opciones que tenemos de bebida para servir 
+  if m == 1:
+    print("Que bebida desea?")
+    for x in range (0,4):
+      print(Bebidas[n3],".",n4)
+      n3=n3+1
+      n4=n4+1
+    p=int(input("Selecione cual desea "))
+    #aqui ponemos una forma de que si una sale que si las otras 3 salen que no, y asi con todos los posibles casos 
+    if p == 1:
+      confir.append(1)
+      confir.append(2)
+      confir.append(2)
+      confir.append(2)
+    elif p == 2:
+      confir.append(2)
+      confir.append(1)
+      confir.append(2)
+      confir.append(2)
+    elif p == 3: 
+      confir.append(2)
+      confir.append(2)
+      confir.append(1)
+      confir.append(2)
+    elif p == 4:
+      confir.append(2)
+      confir.append(2)
+      confir.append(2)
+      confir.append(1)
+  else:
+    confir.append(2)
+    confir.append(2)
+    confir.append(2)
+    confir.append(2)
+
+
+
+
+
+
+
+
+
+
+r=""
+#aqui creamos un ciclo de todo nuestro programa y se terminara cuando pongamos en la pregunta la palabra Fin
+while r != "Fin":
+  pre()
+  extra()
+  agua()
+  print("")
+  r=str(input("Deseas terminar las ordenes? escribe Fin "))
+  
+#aqui contaremos las ordenes que hay contando cuantas veces se repite 15 en la lista
+ordenes= len(confir)
+ordehay= int(ordenes/15)
+print("Hay en total", ordehay, "ordenes")
+
+#aqui vamos a repetir con todos lo mismo para saber cuantas veces se repite una cosa en la lista en una cierta posicion dada
+lechugasin=[]
+er=3
+for i in range (0,ordehay):
+  if confir[er] == 2:
+    lechugasin.append(1)
+  er=er+15
+lechu= len(lechugasin)
+lechuga = (lechu*100)/ordehay
+print("hay %",lechuga,"de ordenes que no tienen lechuga ")
+
+tomatesin=[]
+et=4
+for i in range (0,ordehay):
+  if confir[et] == 2:
+    tomatesin.append(1)
+  et=et+15
+toma= len(tomatesin)
+tomate = (toma*100)/ordehay
+print("hay %",tomate,"de ordenes que no tienen tomate ")
+
+tortaextrasin=[]
+ete=1
+for i in range (0,ordehay):
+  if confir[ete] == 2:
+    tortaextrasin.append(1)
+  ete=ete+15
+torta= len(tortaextrasin)
+tortascarne = (torta*100)/ordehay
+print("hay %",tortascarne,"de ordenes que no tienen torta de carne ")
+
+#aqui contaremos los combos y no combos sabiendo si querian aguas o acompañamientos
+combos= len(ordenescombo)
+combossi = len(ordenescombosi)
+print("hay",combossi, "combos de", ordehay )
+print("hay",combos,"no combos de", ordehay)
+
+#aqui contaremos igualemente cuantas veces se repite papas y aros de cebolla
+conpapas=[]
+cp=9
+for i in range (0,ordehay):
+  if confir[cp] == 1:
+    conpapas.append(1)
+  cp=cp+15
+pap= len(conpapas)
+
+conaro=[]
+ca=10
+for i in range (0,ordehay):
+  if confir[ca] == 1:
+    conaro.append(1)
+  ca=ca+15
+aro= len(conaro)
+print("Hay",pap,"ordenes de papas vs hay",aro,"ordenes de aro")
+
+#aqui contaremos igual pero las aguas y la cantidad que hay
+coca=[]
+cc=11
+for i in range (0,ordehay):
+  if confir[cc] == 1:
+    coca.append(1)
+  cc=cc+15
+cocas= len(coca)
+
+sprite=[]
+st=12
+for i in range (0,ordehay):
+  if confir[st] == 1:
+    sprite.append(1)
+  st=st+15
+sprites= len(sprite)
+
+pepsi=[]
+psi=13
+for i in range (0,ordehay):
+  if confir[psi] == 1:
+    pepsi.append(1)
+  psi=psi+15
+pepsis= len(pepsi)
+
+seven=[]
+sv=14
+for i in range (0,ordehay):
+  if confir[sv] == 1:
+    seven.append(1)
+  sv=sv+15
+sevens= len(seven)
+
+#aqui haremos una logica para ordenar la contidad de bebidas que hay con cada caso de las bebidas
+cantidaddebebidas=[]
+
+cantidaddebebidas.append(cocas)
+cantidaddebebidas.append(sprites)
+cantidaddebebidas.append(pepsis)
+cantidaddebebidas.append(sevens)
+
+cantidaddebebidas.sort()
+
+if cantidaddebebidas[0] == cocas:
+  print(cantidaddebebidas[0],"Coca-colas")
+elif cantidaddebebidas[0] == sprites:
+  print(cantidaddebebidas[0],"Sprites")
+elif cantidaddebebidas[0] == sevens:
+  print(cantidaddebebidas[0],"Sevens")
+elif cantidaddebebidas[0] == pepsis:
+  print(cantidaddebebidas[0],"Pepsis")
+
+if cantidaddebebidas[1] == cocas:
+  print(cantidaddebebidas[1],"Coca-colas")
+elif cantidaddebebidas[1] == sprites:
+  print(cantidaddebebidas[1],"Sprites")
+elif cantidaddebebidas[1] == sevens:
+  print(cantidaddebebidas[1],"Sevens")
+elif cantidaddebebidas[1] == pepsis:
+  print(cantidaddebebidas[1],"Pepsis")
+
+if cantidaddebebidas[2] == cocas:
+  print(cantidaddebebidas[2],"Coca-colas")
+elif cantidaddebebidas[2] == sprites:
+  print(cantidaddebebidas[2],"Sprites")
+elif cantidaddebebidas[2] == sevens:
+  print(cantidaddebebidas[2],"Sevens")
+elif cantidaddebebidas[2] == pepsis:
+  print(cantidaddebebidas[2],"Pepsis")
+
+if cantidaddebebidas[3] == cocas:
+  print(cantidaddebebidas[3],"Coca-colas")
+elif cantidaddebebidas[3] == sprites:
+  print(cantidaddebebidas[3],"Sprites")
+elif cantidaddebebidas[3] == sevens:
+  print(cantidaddebebidas[3],"Sevens")
+elif cantidaddebebidas[3] == pepsis:
+  print(cantidaddebebidas[3],"Pepsis")

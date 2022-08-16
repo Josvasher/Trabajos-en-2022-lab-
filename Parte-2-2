@@ -1,0 +1,14 @@
+n1=str(input("Ingresar una palabra: "))
+n2=''.join(reversed(n1))
+#crea una variable que es igual que la anterior pero la voltea
+n3=n2.lower()
+n4=n1.lower()
+#hacemos las dos variables minusculas para que no hayan problemas para compararlos
+n5= n4.replace(" ", "")
+n6= n3.replace(" ", "")
+#le quitamos el espacio a las dos variables
+if n5 == n6: 
+ print("La palabra si es un palindromo")
+else:
+  print("La palabra no es un polindromo")
+#los comparamos para ver si la condicion es verdadera o falsa 

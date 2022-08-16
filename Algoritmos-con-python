@@ -1,0 +1,46 @@
+
+print("Bienvenidos ")
+
+for i in range(0,2):
+  print(" ")
+#Pedimos el usuario y la contraseña.
+x=str(input("Ingrese un Usuario: "))
+Y=str(input("Ingrese una contraseña: "))
+
+for i in range(0,2):
+  print(" ")
+p=len(x)
+p1=(x[-1])
+p2=(x[-2])
+p3=(x[-3])
+p4=x.count(" ")
+
+numeros=["0","1","2","3","4","5","6","7","8","9"]
+#Identificamos si las ultimas tres variables son numeros con ayuda de la lista y las coordenadas dadas a "p" y asi con las demas.
+if p > 10: 
+  print("Su usuario tiene mas de 10 caracteres ")
+else: 
+  print("Su usuario tiene menos de 10 caracteres")
+#Aca cuenta cuantos caracteres tiene el usiario a la hora de ingresar el usuario y si tiene manos de 10 caracteres mostrara el segundo mensaje.
+if p1 in numeros and p2 in numeros and p3 in numeros:
+  print("Su usuario tiene los ultimos 3 caracteres un numero") 
+else:
+  print("Los ultimos 3 caracteres tienen que ser numeros ")
+#Si p y los demas p cumplen con las caracteristicas hara un print y si uno esta malo mostrara el mensaje que esta malo p.
+if p4 > 0:
+  print("No ponga espacios ")
+else:
+  print("Su usuario no tiene espacios")
+f=len(Y)
+g1=Y.isupper()
+g2=Y.islower()
+#p4 estrara viendo si hay espacios y si tanto usuario como contraseña cumplen con no tenere espacios pues se hace el print.
+if f > 5: 
+  print("Tiene mas de 5 caracteres ")
+else:
+  print("Su contraseña tiene menos de 5 caracteres UwU")
+if g1 == g2: 
+  print("Su contraseña si tiene tanto mayusculas como minusculas")
+else:
+  print("Tiene que llevar tanto mayusculas y minusculas")
+#Veremos lo de la contraseña, si uno tiene mas de 5 caaracteres estara malo y si esta bueno muestra el mensaje bueno y tambien verifica si lleva mayus y minus.
